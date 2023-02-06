@@ -7,7 +7,10 @@ string a="";
 string b="";
 char token='X';
 int r,c;
-bool d=false;
+int d=0;
+int p=2;
+int q=0;
+
 
 
 void one(){
@@ -21,6 +24,7 @@ void one(){
     cout<<"     |        |      "<<endl;
     cout<<"  "<<o[2][0]<<"  |    "<<o[2][1]<<"   |  "<<o[2][2]<<"   "<<endl;
     cout<<"     |        |      "<<endl;
+    p=0;
 
 }
 void two(){
@@ -86,32 +90,33 @@ void two(){
 
 
 }
-bool three(){
-    for(int i=0;i<3;i++){
-
-            if((o[i][0]==o[i][1] && o[i][0]==o[i][2]) || (o[0][i]==o[1][i] && o[0][i]==o[2][i])){
-                    return true;
-
-            }
-    }
-             if((o[0][0]==o[1][1] && o[0][0]==o[2][2]) || (o[0][2]==o[1][1] && o[2][0])){
-                return true;
-            }
-
-
-
-
-           for(int i=0;i<3;i++){
+void three(){
+     for(int i=0;i<3;i++){
              for(int j=0;j<3;j++){
-                if(o[i][j]!='X' && o[i][j]!='0'){
-                    return false;}
+                 if(o[i][j]!='X' && o[i][j]!='O'){
+                     p++;
+                    }
                 }
              }
+    for(int i=0;i<3;i++){
 
+            if((o[i][0]==o[i][1] && o[i][0]==o[i][2])){
+                q++;
+            }
+            if( (o[0][i]==o[1][i] && o[0][i]==o[2][i])){
+                q++;
+            }
+    }
+             if((o[0][0]==o[1][1] && o[0][0]==o[2][2])){
+                 q++;
+              
+            }
+            if( (o[0][2]==o[1][1] && o[2][0]==o[1][1])){
+                q++;
+            }
 
-           d=true;
-           return false;
-
+         if(p==0 && q==0){
+           d=1;}
 
     }
 void zero(){
@@ -123,38 +128,26 @@ cout<<"First Player name is: "<<endl;
     cout<<b<<" then will play next with 0"<<endl;
 }
 
-
-
 int main()
 {
-
     zero();
-    while(!three()){
+    while(q==0 && d!=1){
         one();
         two();
         three();
-
+       cout<<q<<" "<<d<<" "<<p<<endl;
     }
     one();
-    if(token=='X' && (d==false)){
-
+    if(token=='X' && (d==0)){
         cout<<b<<" is the winner"<<endl;
-
+        cout<<q;
     }
-    else if(token=='O' && (d==false)){
-
+    else if(token=='O' && (d==0)){
         cout<<a<<" is the winner";
-
-
     }
-    else if(d==true){
+    else if(d==1){
         cout<<"It's a draw";
-
-
-
-
     }
 return 0;
 
   }
-
