@@ -8,7 +8,7 @@ string b="";
 char token='X';
 int r,c;
 int d=0;
-int p=2;
+int p;
 int q=0;
 
 
@@ -75,11 +75,11 @@ void two(){
     else if(digit<1 || digit>9){
         cout<<"Invalid!!";
     }
-    if((token=='X') && (o[r][c]!='X') && (o[r][c]!='0')){
+    if((token=='X') && (o[r][c]!='X') && (o[r][c]!='O')){
         o[r][c]='X';
         token='O';
     }
-    else if((token=='O') && (o[r][c]!='X') && (o[r][c]!='0')){
+    else if((token=='O') && (o[r][c]!='X') && (o[r][c]!='O')){
         o[r][c]='O';
         token='X';
     }
@@ -91,6 +91,7 @@ void two(){
 
 }
 void three(){
+    p=0;
      for(int i=0;i<3;i++){
              for(int j=0;j<3;j++){
                  if(o[i][j]!='X' && o[i][j]!='O'){
@@ -103,7 +104,7 @@ void three(){
             if((o[i][0]==o[i][1] && o[i][0]==o[i][2])){
                 q++;
             }
-            if( (o[0][i]==o[1][i] && o[0][i]==o[2][i])){
+            if((o[0][i]==o[1][i] && o[0][i]==o[2][i])){
                 q++;
             }
     }
@@ -135,7 +136,7 @@ int main()
         one();
         two();
         three();
-       cout<<q<<" "<<d<<" "<<p<<endl;
+       
     }
     one();
     if(token=='X' && (d==0)){
