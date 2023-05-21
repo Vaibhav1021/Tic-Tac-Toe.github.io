@@ -72,9 +72,7 @@ void two(){
         r=2;
         c=2;
     }
-    else if(digit<1 || digit>9){
-        cout<<"Invalid!!";
-    }
+    
     if((token=='X') && (o[r][c]!='X') && (o[r][c]!='O')){
         o[r][c]='X';
         token='O';
@@ -84,7 +82,7 @@ void two(){
         token='X';
     }
     else{
-        cout<<"Grid is already occupied,please select no.from screen only!!"<<endl;
+        cout<<"Invalid input,please select no.from screen only!!"<<endl;
         two();
     }
 
